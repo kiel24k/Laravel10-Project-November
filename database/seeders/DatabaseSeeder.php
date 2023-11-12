@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\shopuser;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -12,7 +14,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+
+        $eyy = shopuser::factory()->count(3)->make();
+
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
