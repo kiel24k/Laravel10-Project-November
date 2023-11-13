@@ -3,11 +3,10 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Shop>
  */
 class ShopFactory extends Factory
 {
@@ -21,7 +20,8 @@ class ShopFactory extends Factory
         return [
             'game_id' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'password' => Hash::make('111')
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+
         ];
     }
 }

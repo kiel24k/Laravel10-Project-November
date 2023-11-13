@@ -1,0 +1,3 @@
+Set @num := 0;
+Update Tblinvoices SET InvoiceID = @num := (@num+1);
+ALTER TABLE Tblinvoices AUTO_INCREMENT =1;

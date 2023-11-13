@@ -4,8 +4,12 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use App\Models\shopuser;
+use App\Models\shop;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,7 +19,18 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
 
-        $eyy = shopuser::factory()->count(3)->make();
+        shop::factory()
+        ->count(10)
+        ->create();
+        // DB::table('shop_user')->insert([
+        //     'game_id' => str::random(10),
+        //     'email' => str::random(10).'@gmail.com',
+        //     'password' => Hash::make('password'),
+        // ]);
+        //  shop::factory()
+        //     ->count(50)
+        //     ->hasPosts(1)
+        //     ->create();
 
 
         // \App\Models\User::factory()->create([
