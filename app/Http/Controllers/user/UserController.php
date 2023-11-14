@@ -13,12 +13,12 @@ class UserController extends Controller
         return view('user.main.index');
     }
     public function UserSignup(){
-        return view('user/control/signup');
+        return view('user.control.signup');
     }
     public function UserLogin(){
-        return view('user/control/login');
+        return view('user.control.login');
     }
     public function UserSection(){
-        return view('user/body/section');
+        return view('user.body.section');
     }
 }
