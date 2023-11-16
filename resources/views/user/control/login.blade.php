@@ -17,14 +17,22 @@
         </div>
         <div class="container-fluid form-container text-center">
             <div class="form">
-                <form action="">
+                <form action="{{route('user.login')}}" method="POST">
+                    @csrf
                     <p>Login</p>
-
                     <div class="email">
-                        <input type="email" placeholder="Email" class="form-control">
+                        @error('email')
+                        <span class="text-danger">{{$message}}</span>
+
+                        @enderror
+                        <input type="email" name="email" placeholder="Email" class="form-control" autofocus>
                     </div>
                     <div class="password">
-                        <input type="password" placeholder="Password" class="form-control">
+                        @error('password')
+                        <span class="text-danger">{{$message}}</span>
+
+                        @enderror
+                        <input type="password" name="password" placeholder="Password" class="form-control" autofocus>
                     </div>
 
                     <div class="submit">

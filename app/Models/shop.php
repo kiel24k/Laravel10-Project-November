@@ -10,5 +10,5 @@ class shop extends Model
     use HasFactory;
     protected $table = 'shop_user';
 
-    
+
 }
