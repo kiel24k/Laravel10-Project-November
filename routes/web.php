@@ -34,10 +34,28 @@ require __DIR__.'/auth.php';
 
 Route::get('admin/index',[AdminController::class,'AdminIndex']);
 
-Route::get('user/index',[UserController::class,'UserIndex']);
-Route::get('user/signup',[UserController::class,'UserSignup'])->name('user.signup');
-Route::get('user/login',[UserController::class,'UserLogin']);
-route::post('user/login',[UserController::class,'UserAuthentication'])->name('user.login');
-Route::get('user/section/product',[UserController::class,'UserSection'])->name('user.section');
+
+//user
+route::controller(UserController::class)->group(function(){
+    Route::get('user/index','UserIndex');
+    Route::get('user/signup','UserSignup')->name('user.signup');
+    Route::get('www.Shop.com','UserLogin');
+    route::post('www.Shop.coms','UserAuthentication')->name('user.login');
+    Route::get('user/section/product','UserSection')->name('user.section');
+});
+
+//admin
+route::controller(AdminController::class)->group(function(){
+route::get('display/data','List')->name('admin.display');
+route::get('profiless','profile');
+route::get('Admin/Panel', 'AdminPanel')->name('admin.panel');
+route::get('Admin/Panels', 'AdminPanels')->name('admin.panels');
+route::get('Admin/delete/{id}', 'AdminDelete')->name('admin.delete');
+route::get('Admin/Add','AdminAdd')->name('admin.add');
+route::post('Admin/Add/Data','AdminAddData')->name('admin.adds');
+route::get('Admin/Display/Edit/{id}','EditType')->name('admin.update'); //c
+route::post('Admin/Update','AdminUpdate')->name('admin.updates');
+});
+
 
 

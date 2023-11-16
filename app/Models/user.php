@@ -17,10 +17,15 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
+    public $timestamps = false;
     protected $fillable = [
+        //use for selectable parents only
         'name',
+        'username',
         'email',
         'password',
+        'address',
     ];
 
     /**
