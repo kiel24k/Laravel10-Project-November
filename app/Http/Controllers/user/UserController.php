@@ -24,9 +24,14 @@ class UserController extends Controller
     {
         return view('user.control.login');
     }
+
+
     public function UserSection()
     {
-        return view('user.body.section');
+        $store = DB::table('items')
+        ->select('*')
+        ->get();
+        return view('user.body.section',compact('store'));
     }
     public function UserAuthentication(Request $request)
     {
@@ -57,4 +62,5 @@ class UserController extends Controller
 
 
     }
+  
 }

@@ -42,6 +42,7 @@ route::controller(UserController::class)->group(function(){
     Route::get('www.Shop.com','UserLogin');
     route::post('www.Shop.coms','UserAuthentication')->name('user.login');
     Route::get('user/section/product','UserSection')->name('user.section');
+    route::get('store/items','StoreItems')->name('store.items');
 });
 
 //admin
@@ -63,6 +64,7 @@ route::get('item/update/{id}','ItemUpdate')->name('update.item');
 route::post('item/update/data','ItemUpdateData')->name('update.data.item');
 route::get('Delete/Item/{id}','ItemDelete')->name('item.delete');
 route::post('add/data/item','AddItem')->name('add.data.item');
+
 });
 
 
