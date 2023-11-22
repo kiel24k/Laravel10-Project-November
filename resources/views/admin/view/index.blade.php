@@ -19,6 +19,7 @@
 
 <div class="container" >
     @yield('list')
+    @yield('item')
 </div>
 
 </body>

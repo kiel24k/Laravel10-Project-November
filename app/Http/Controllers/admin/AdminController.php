@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\user;
@@ -58,5 +59,55 @@ class AdminController extends Controller
             'email' => $request->email
         ]);
         return redirect()->route('admin.display');
+    }
+    public function ItemList()
+    {
+        return view('admin.item.list');
+    }
+
+    public function ItemData()
+    {
+        $ItemData = DB::table('items')
+            ->select('*')
+            ->get();
+        return view('admin.item.list', compact('ItemData'));
+    }
+    public function ItemAdd()
+    {
+        return view('admin.item.add_item');
+    }
+    //add item here
+    public function ItemUpdate($id)
+    {
+
+        $item = Item::findOrFail($id);
+        return view('admin.item.update_item', compact('item'));
+    }
+    public function ItemUpdateData(Request $req)
+    {
+        Item::findOrFail($req->id)->update([
+            'name' => $req->name,
+            'description' => $req->description,
+            'price' => $req->price,
+            'quantity' => $req->quantity,
+            'image' => $req->image,
+        ]);
+        return redirect()->route('data.item');
+    }
+    public function ItemDelete($id)
+    {
+        Item::findOrFail($id)->delete();
+        return redirect()->route('data.item');
+    }
+    public function AddItem (Request $req){
+        Item::create([
+            'name'=>$req->name,
+            'description'=>$req->description,
+            'price'=>$req->price,
+            'quantity'=>$req->quantity,
+            'image'=>$req->image
+        ]);
+        return redirect()->route('data.item');
+
     }
 }

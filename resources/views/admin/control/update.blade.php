@@ -1,7 +1,7 @@
 @extends('admin.view.index')
 @section('list')
     <div class="container">
-        <form action="{{ route('admin.updates') }}" method="post">
+        <form action="{{ route('admin.update') }}" method="post">
             @csrf
             <input type="hidden" name="id" value="{{$types->id}}">
             <div class="username">

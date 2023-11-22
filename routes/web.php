@@ -55,7 +55,17 @@ route::get('Admin/Add','AdminAdd')->name('admin.add');
 route::post('Admin/Add/Data','AdminAddData')->name('admin.adds');
 route::get('Admin/Display/Edit/{id}','EditType')->name('admin.update'); //c
 route::post('Admin/Update','AdminUpdate')->name('admin.updates');
+
+
+route::get('item/data','ItemData')->name('data.item');
+route::get('item/add','ItemAdd')->name('add.item');
+route::get('item/update/{id}','ItemUpdate')->name('update.item');
+route::post('item/update/data','ItemUpdateData')->name('update.data.item');
+route::get('Delete/Item/{id}','ItemDelete')->name('item.delete');
+route::post('add/data/item','AddItem')->name('add.data.item');
 });
+
+
 
 
 
