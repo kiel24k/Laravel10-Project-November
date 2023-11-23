@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Item;
 use App\Models\User;
 use App\Models\UserOrder;
+use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -31,13 +32,12 @@ class UserController extends Controller
     public function UserSection()
     {
         $store = DB::table('items')
-        ->select('*')
-        ->get();
-        return view('user.body.section',compact('store'));
+            ->select('*')
+            ->get();
+        return view('user.body.section', compact('store'));
     }
     public function UserAuthentication(Request $request)
     {
-
         $credentials = $request->validate([
             'email' => 'required',
             'password' => 'required'
@@ -46,8 +46,8 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) {
             // only for sensitive data that not allowed to load
             // $request->session()->regenerate();
-            $data = $request->user()->id;
-            $RowData = user::findOrFail($data);
+            // $data = $request->user()->id;
+            // $RowData = user::findOrFail($data);
             if ($request->user()->role == 'admin') {
                 return redirect()->route('data.item');
             } elseif ($request->user()->role == 'user') {
@@ -58,12 +58,13 @@ class UserController extends Controller
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
-
-    public function PlaceOrder($id){
+    public function PlaceOrder($id)
+    {
         $item = Item::findOrFail($id);
-        return view('user.control.place_order',compact('item'));
+        return view('user.control.place_order', compact('item'));
     }
-    public function Order(Request $req){
+    public function Order(Request $req)
+    {
         UserOrder::create([
             'user_id' => $req->auth,
             'product_name' => $req->order_name,
@@ -71,8 +72,13 @@ class UserController extends Controller
 
         ]);
         return redirect()->route('user.section');
-
     }
-
-
+    public function UserProfile(Authenticatable $user)
+    {
+        $userid = $user->id;
+        $table = DB::table('user_orders')
+            ->where('user_id', '=', $userid)
+            ->get();
+        return view('user.control.profile', compact('table'));
+    }
 }

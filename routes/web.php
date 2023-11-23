@@ -31,6 +31,8 @@ route::controller(UserController::class)->group(function(){
     route::get('store/items','StoreItems')->name('store.items');
     route::get('place_order/store/{id}','PlaceOrder')->name('user.placeorder');
     route::post('order','Order')->name('order');
+    route::get('user/profile/{id}','UserProfile')->name('user.profile');
+    route::get('user/profiles','UserProfiles')->name('user.profiles');
 
 });
 

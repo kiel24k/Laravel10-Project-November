@@ -32,7 +32,7 @@
                         <li class="nav-item p-1">
                             <a href="" class="nav-link p-2">
                                 @auth
-                                    <p class="text-info">{{ Auth::user()->name }}</p>
+                                  <p class="text-info"><a href="{{route('user.profile', Auth::user()->id)}}">{{ Auth::user()->name }}</a></p>
                                 @else
                                     <p>You are not logged in.</p>
                                 @endauth

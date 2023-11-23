@@ -21,6 +21,7 @@
 @yield('section')
 
 
+
 @include('user/body/footer')
 
 

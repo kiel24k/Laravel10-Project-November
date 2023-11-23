@@ -79,7 +79,6 @@ class AdminController extends Controller
     //add item here
     public function ItemUpdate($id)
     {
-
         $item = Item::findOrFail($id);
         return view('admin.item.update_item', compact('item'));
     }
