@@ -16,33 +16,22 @@ use App\Http\Controllers\admin\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
 
-require __DIR__.'/auth.php';
-
-Route::get('admin/index',[AdminController::class,'AdminIndex']);
 
 
 //user
 route::controller(UserController::class)->group(function(){
     Route::get('user/index','UserIndex');
     Route::get('user/signup','UserSignup')->name('user.signup');
-    Route::get('www.Shop.com','UserLogin');
+    Route::get('/','UserLogin')->name('shop');
     route::post('www.Shop.coms','UserAuthentication')->name('user.login');
     Route::get('user/section/product','UserSection')->name('user.section');
     route::get('store/items','StoreItems')->name('store.items');
+    route::get('place_order/store/{id}','PlaceOrder')->name('user.placeorder');
+    route::post('order','Order')->name('order');
+
 });
 
 //admin

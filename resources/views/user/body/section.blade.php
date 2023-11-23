@@ -45,21 +45,24 @@
                 @foreach ($store as $stores)
                     <div class="col">
                         <form action="">
-                            <a href="">
-                                <img src="{{ asset('picture/case.png') }}" alt="">
-                                <div class="description">
-                                    <p>{{ $stores->name }}</p>
-                                    <div class="price">
-                                        <h6>{{ $stores->price }}</h6>
-                                    </div>
+                            <img src="{{ asset('picture/case.png') }}" alt="">
+                            <div class="description">
+                                <p>{{ $stores->name }}</p>
+                                <div class="price">
+                                    <h6>₱{{ $stores->price }}.00</h6>
                                 </div>
-                            </a>
+                                <div class="buy-button">
+                                    <button class="btn btn-info"><a href="{{ route('user.placeorder', $stores->id) }}"
+                                            class="nav-link text-white">Buy</a></button>
+                                </div>
+
+
+                            </div>
                         </form>
                     </div>
                 @endforeach
 
             </div>
         </div>
-
     </section>
 @endsection

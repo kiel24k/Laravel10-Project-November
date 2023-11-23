@@ -21,7 +21,6 @@
             <div class="form">
                 <form action="">
                     <p>Sign up</p>
-
                     <div class="gameid">
                         <input type="text" placeholder="GameID" class="form-control">
                     </div>

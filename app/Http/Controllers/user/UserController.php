@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Item;
 use App\Models\User;
+use App\Models\UserOrder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -40,27 +42,37 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required'
         ]);
-
         //single user or row selection
         if (Auth::attempt($credentials)) {
             // only for sensitive data that not allowed to load
             // $request->session()->regenerate();
-            // $data = $request->user()->id;
-            // $RowData = user::find($data);
+            $data = $request->user()->id;
+            $RowData = user::findOrFail($data);
             if ($request->user()->role == 'admin') {
-                return redirect()->route('admin.panel');
-
-
+                return redirect()->route('data.item');
             } elseif ($request->user()->role == 'user') {
-                return view('user.main.index');
+                return redirect()->route('user.section');
             }
-
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
+    }
 
+    public function PlaceOrder($id){
+        $item = Item::findOrFail($id);
+        return view('user.control.place_order',compact('item'));
+    }
+    public function Order(Request $req){
+        UserOrder::create([
+            'user_id' => $req->auth,
+            'product_name' => $req->order_name,
+            'status' => 'pending'
+
+        ]);
+        return redirect()->route('user.section');
 
     }
-  
+
+
 }

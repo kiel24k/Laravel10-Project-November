@@ -12,10 +12,10 @@
                     <input type="text" name="description"  class="form-control" placeholder="Description">
                 </div>
                 <div class="price">
-                    <input type="text" name="price"  class="form-control" placeholder="Price">
+                    <input type="number" name="price"  class="form-control" placeholder="Price">
                 </div>
                 <div class="quantity">
-                    <input type="text" name="quantity"  class="form-control" placeholder="Quanitty">
+                    <input type="number" name="quantity"  class="form-control" placeholder="Quanitty">
                 </div>
                 <div class="image">
                     <input type="text" name="image"  class="form-control" placeholder="Image">

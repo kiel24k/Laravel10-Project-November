@@ -22,11 +22,9 @@ class shhopone extends Seeder
 
         DB::table('alluser')->insert([
             //Admin
-
                 'name' => 'Admin',
                 'email' => 'admin@email.com',
                 'password' => Hash::make('111'),
-               
         ]);
     }
 }

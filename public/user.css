@@ -141,6 +141,21 @@ login .signuplink span{
     color:Red;
 
 }
+place-order .place-order .container{
+    padding-top:10rem;
+
+}
+place-order .place-order input{
+width:20rem;
+margin:auto;
+}
+place-order .place-order .submit-order{
+    width:150px;
+    margin:auto;
+}
+place-order .place-order .submit-order button{
+    margin-left:30px;
+}
 
 
 
