@@ -69,7 +69,6 @@ class UserController extends Controller
             'user_id' => $req->auth,
             'product_name' => $req->order_name,
             'status' => 'pending'
-
         ]);
         return redirect()->route('user.section');
     }
